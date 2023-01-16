@@ -1,0 +1,3 @@
+/bazel-*
+/coverage
+/node_modules

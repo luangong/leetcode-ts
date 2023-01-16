@@ -1,0 +1,48 @@
+load("@npm//:defs.bzl", "npm_link_all_packages")
+# load("@aspect_rules_js//js:defs.bzl", "js_test")
+# load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+load("@jest//:defs.bzl", "jest_test")
+
+npm_link_all_packages()
+
+# ts_project(
+#     name = "src_ts",
+#     srcs = glob(["src/**/*.ts"], exclude = ["src/**/*.test.ts"]),
+#     declaration = True,
+#     # tsconfig = "//:tsconfig.json",
+#     deps = [
+#         "//:node_modules/@datastructures-js/priority-queue",
+#         "//:node_modules/@datastructures-js/queue",
+#     ],
+# )
+
+# ts_project(
+#     name = "src_test_ts",
+#     srcs = glob(["src/**/*.test.ts"]),
+#     # declaration = True,
+#     # tsconfig = "//:tsconfig.json",
+#     deps = [
+#         # ":src_ts",
+#         # "//:node_modules/@types/jest",
+#     ],
+# )
+
+jest_test(
+    name = "test",
+    config = "//:jest.config.js",
+    data = glob([
+        "src/**/*.ts",
+    ]) + glob([
+        "src/**/test_cases.yml",
+    ]) + [
+        "babel.config.js",
+        "global.d.ts",
+        "//:node_modules",
+        # "//:node_modules/jest-extended",
+        # "//:node_modules/@babel/preset-env",
+        # "//:node_modules/@babel/preset-typescript",
+        # "//:node_modules/@datastructures-js/priority-queue",
+        # "//:node_modules/@datastructures-js/queue",
+        # "//:node_modules/yaml",
+    ],
+)
