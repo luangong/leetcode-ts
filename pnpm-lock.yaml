@@ -37,8 +37,8 @@ devDependencies:
     specifier: ^3.2.4
     version: 3.2.4(jest@29.5.0)
   typescript:
-    specifier: 4.5.4
-    version: 4.5.4
+    specifier: 4.9.5
+    version: 4.9.5
   yaml:
     specifier: ^2.2.1
     version: 2.2.1
@@ -3403,8 +3403,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /typescript@4.5.4:
-    resolution: {integrity: sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==}
+  /typescript@4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true
