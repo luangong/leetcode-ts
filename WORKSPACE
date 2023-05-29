@@ -46,9 +46,9 @@ npm_repositories()
 
 http_archive(
     name = "aspect_rules_ts",
-    sha256 = "617cc11d2ae4fe64218323da1c3776e7d25f9f45d88c1addda675d7ad736f683",
-    strip_prefix = "rules_ts-1.1.0",
-    url = "https://github.com/aspect-build/rules_ts/archive/refs/tags/v1.1.0.tar.gz",
+    sha256 = "ace5b609603d9b5b875d56c9c07182357c4ee495030f40dcefb10d443ba8c208",
+    strip_prefix = "rules_ts-1.4.0",
+    url = "https://github.com/aspect-build/rules_ts/archive/refs/tags/v1.4.0.tar.gz",
 )
 
 # Fetches the rules_ts dependencies.
