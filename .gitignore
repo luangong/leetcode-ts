@@ -1,0 +1,4 @@
+/bazel-*
+/coverage
+/dist
+/node_modules

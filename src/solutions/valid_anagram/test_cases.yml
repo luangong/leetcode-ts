@@ -1,0 +1,4 @@
+- { s: anagram, t: nagaram, expected: true  }
+- { s: '',      t: '',      expected: true  }
+- { s: rat,     t: car,     expected: false }
+- { s: fun,     t: func,    expected: false }

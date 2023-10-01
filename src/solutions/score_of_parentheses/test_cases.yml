@@ -1,0 +1,4 @@
+- { parentheses: '()',       expected: 1 }
+- { parentheses: '(())',     expected: 2 }
+- { parentheses: '()()',     expected: 2 }
+- { parentheses: '(()(()))', expected: 6 }

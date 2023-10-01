@@ -1,0 +1,16 @@
+# Enable bzlmod
+common --enable_bzlmod
+
+# Don’t show progress message during CI builds
+build:ci --noshow_progress
+
+# Remote Caching
+# https://app.buildbuddy.io/docs/setup/
+build:ci --bes_results_url=https://app.buildbuddy.io/invocation/
+build:ci --bes_backend=grpcs://remote.buildbuddy.io
+build:ci --remote_cache=grpcs://remote.buildbuddy.io
+build:ci --experimental_remote_cache_compression
+build:ci --remote_timeout=3600
+
+test:ci --collect_code_coverage
+test:ci --test_output=all

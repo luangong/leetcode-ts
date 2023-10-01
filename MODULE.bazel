@@ -1,0 +1,49 @@
+module(name = "leetcode_ts", version = "0.1.0")
+
+# https://registry.bazel.build/modules/rules_nodejs
+bazel_dep(name = "rules_nodejs", version = "6.0.1")
+
+# Available Node versions are in
+# https://github.com/bazelbuild/rules_nodejs/blob/v6.0.1/nodejs/private/node_versions.bzl
+#
+# LeetCode runs our code with Node 16.13.2, but there is a bug in Node 16.13.2 with ESM
+# loader when running with Bazel, so we use 16.14.2 instead.
+#
+# See https://nodejs.org/en/blog/release/v16.14.0 fore more details.
+node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node")
+node.toolchain(node_version = "16.14.2")
+
+##########################################################################################
+
+# https://registry.bazel.build/modules/aspect_rules_js
+bazel_dep(name = "aspect_rules_js", version = "1.32.1")
+
+npm = use_extension("@aspect_rules_js//npm:extensions.bzl", "npm", dev_dependency = True)
+npm.npm_translate_lock(
+    name = "npm",
+    npmrc = "//:.npmrc",
+    pnpm_lock = "//:pnpm-lock.yaml",
+    verify_node_modules_ignored = "//:.bazelignore",
+)
+
+use_repo(npm, "npm")
+
+##########################################################################################
+
+# https://registry.bazel.build/modules/aspect_rules_ts
+bazel_dep(name = "aspect_rules_ts", version = "1.4.5")
+
+rules_ts_ext = use_extension(
+    "@aspect_rules_ts//ts:extensions.bzl",
+    "ext",
+    dev_dependency = True,
+)
+
+rules_ts_ext.deps()
+
+use_repo(rules_ts_ext, "npm_typescript")
+
+##########################################################################################
+
+# https://registry.bazel.build/modules/aspect_rules_jest
+bazel_dep(name = "aspect_rules_jest", version = "0.19.5")

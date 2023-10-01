@@ -1,0 +1,16 @@
+- operations:
+    - insert 1
+    - remove 2
+    - insert 2
+    - getRandom
+    - remove 1
+    - insert 2
+    - getRandom
+  expected:
+    - true
+    - false
+    - true
+    - 2
+    - true
+    - false
+    - 2

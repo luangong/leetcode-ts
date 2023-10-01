@@ -1,0 +1,20 @@
+- sentence: ' '
+  expected: ''
+
+- sentence: '      '
+  expected: ''
+
+- sentence: '    the   sky     is     blue   '
+  expected: 'blue is sky the'
+
+- sentence: '   abc   def     '
+  expected: 'def abc'
+
+- sentence: '   a   '
+  expected: 'a'
+
+- sentence: '   a   b'
+  expected: 'b a'
+
+- sentence: 'hello   world foo bar'
+  expected: 'bar foo world hello'

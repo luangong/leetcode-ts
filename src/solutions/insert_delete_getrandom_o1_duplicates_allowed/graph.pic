@@ -1,0 +1,103 @@
+.EQ
+delim $$
+.EN
+
+.PS
+scale  = 72
+boxwid = 16
+boxht  = 16
+
+.fam H
+
+################################################################################
+
+box
+
+# Index above the cell
+"0" at 1st last box + (0, 16)
+
+# Key inside the cell
+"4" at 1st last box - (0, 1.25)
+
+# Mappings under the array
+"4 $->$ 0" ljust at 1st last box.sw - (0, 12)
+
+move to last box.e + (32, 0)
+
+################################################################################
+
+box; box
+
+for i = 1 to 2 do {
+  sprintf("%g", i - 1) at `2-i+1'th last box + (0, 16)
+}
+
+"4" at 2nd last box - (0, 1.25)
+"3" at 1st last box - (0, 1.25)
+
+# Mappings under the array
+"4 $->$ 0" ljust at 2nd last box.sw - (0, 12)
+"3 $->$ 1" ljust at 2nd last box.sw - (0, 12 * 2)
+
+move to last box.e + (32, 0)
+
+################################################################################
+
+box; box; box
+
+for i = 1 to 3 do {
+  sprintf("%g", i - 1) at `3-i+1'th last box + (0, 16)
+}
+
+"4" at 3rd last box - (0, 1.25)
+"3" at 2nd last box - (0, 1.25)
+"4" at 1st last box - (0, 1.25)
+
+# Mappings under the array
+"4 $->$ 0, 2" ljust at 3rd last box.sw - (0, 12)
+"3 $->$ 1"    ljust at 3rd last box.sw - (0, 12 * 2)
+
+move to last box.e + (32, 0)
+
+################################################################################
+
+box; box; box; box
+
+# Indices above each cell
+for i = 1 to 4 do {
+  sprintf("%g", i - 1) at `4-i+1'th last box + (0, 16)
+}
+
+# Keys inside each cell
+"4" at 4th last box - (0, 1.25)
+"3" at 3rd last box - (0, 1.25)
+"4" at 2nd last box - (0, 1.25)
+"2" at 1st last box - (0, 1.25)
+
+# Mappings under the array
+"4 $->$ 0, 2" ljust at 4th last box.sw - (0, 12)
+"3 $->$ 1"    ljust at 4th last box.sw - (0, 12 * 2)
+"2 $->$ 3"    ljust at 4th last box.sw - (0, 12 * 3)
+
+move to last box.e + (32, 0)
+
+################################################################################
+
+box; box; box; box; box
+
+for i = 1 to 5 do {
+  sprintf("%g", i - 1) at `5-i+1'th last box + (0, 16)
+}
+
+"4" at 5th last box - (0, 1.25)
+"3" at 4th last box - (0, 1.25)
+"4" at 3rd last box - (0, 1.25)
+"2" at 2nd last box - (0, 1.25)
+"4" at 1st last box - (0, 1.25)
+
+"4 $->$ 0, 2, 4" ljust at 5th last box.sw - (0, 12)
+"3 $->$ 1"       ljust at 5th last box.sw - (0, 12 * 2)
+"2 $->$ 3"       ljust at 5th last box.sw - (0, 12 * 3)
+
+# line from 1st box.nw + (0, 10) to 1st box.sw - (0, 10)
+.PE

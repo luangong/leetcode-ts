@@ -1,0 +1,58 @@
+- operations:
+    - insert 1
+    - remove 1
+    - insert 1
+  expected:
+    - true
+    - true
+    - true
+- operations:
+    - insert 1
+    - remove 1
+    - insert 1
+  expected:
+    - true
+    - true
+    - true
+- operations:
+    - insert 0
+    - insert 1
+    - remove 0
+    - insert 2
+    - remove 1
+    - getRandom
+  expected:
+    - true
+    - true
+    - true
+    - true
+    - true
+    - 2
+
+#   0        0   1        0   1   2        0   1   2   4        0   1   2   3   4
+# ┌───┐    ┌───┬───┐    ┌───┬───┬───┐    ┌───┬───┬───┬───┐    ┌───┬───┬───┬───┬───┐
+# │ 4 │    │ 4 │ 3 │    │ 4 │ 3 │ 4 │    │ 4 │ 3 │ 4 │ 2 │    │ 4 │ 3 │ 4 │ 2 │ 4 │
+# └───┘    └───┴───┘    └───┴───┴───┘    └───┴───┴───┴───┘    └───┴───┴───┴───┴───┘
+#  4 -> 0   4 -> 0       4 -> 0, 2        4 -> 0, 2            4 -> 0, 2, 4
+#           3 -> 1       3 -> 1           3 -> 1               3 -> 1
+#                                         2 -> 3               2 -> 3
+- operations:
+    - insert 4
+    - insert 3
+    - insert 4
+    - insert 2
+    - insert 4
+    - remove 4
+    - remove 3
+    - remove 4
+    - remove 4
+  expected:
+    - true
+    - true
+    - false
+    - true
+    - false
+    - true
+    - true
+    - true
+    - true

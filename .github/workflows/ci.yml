@@ -1,0 +1,37 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      # https://github.com/pnpm/action-setup
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      # https://github.com/actions/setup-node
+      - uses: actions/setup-node@v3
+        with:
+          # pnpm v8 dropped support for Node v16.13 and older while LeetCode uses Node
+          # 16.13.1 to run our code, so we need to pick a version of Node that’s closest
+          # to 16.13.1 and also compatible with pnpm v8.
+          #
+          # See https://github.com/pnpm/pnpm/issues/6297 for more details.
+          node-version: '16.14.2'
+          cache: pnpm
+
+      - run: node --version
+      - run: pnpm --version
+      - run: pnpm install --frozen-lockfile --prefer-offline
+      - run: pnpm test -- --coverage
+
+      - run: bazelisk test --config=ci //:test2
